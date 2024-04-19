@@ -1,0 +1,23 @@
+﻿@model Models.TrainSeatsVM
+
+<div class="container">
+    @if(Model.AvailableWindowSeats == 0 && Model.AvailableAisleSeats == 0)
+    {
+        <div>We apologize. There are no more available seats on the train to <strong>@Model.Destination</strong>. Please select another destination.</div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-12">All Aboard for <strong>@Model.Destination</strong>!</div>
+        </div>
+        <div class="row">
+            <div class="col-6">Available Window Seats: @Model.AvailableWindowSeats</div>
+            <div class="col-6">Available Aisle Seats: @Model.AvailableAisleSeats</div>
+        </div>
+        <div class="row">
+            <div class="col-6"><button class="btn btn-primary" @(Model.AvailableWindowSeats == 0 ? "disabled" : "") onclick="bookWindowSeat('@Model.Destination')">Book</button></div>
+            <div class="col-6"><button class="btn btn-primary" @(Model.AvailableAisleSeats == 0 ? "disabled" : "") onclick="bookAisleSeat('@Model.Destination')">Book</button></div>
+        </div>
+    }  
+</div>
+
