@@ -30,6 +30,12 @@ namespace TrainApp.UnitTests
         }
 
         [Test]
+        public void NewTrain_WhenGivenNegativeSeatCount_ThrowException()
+        {
+            Assert.Throws<ArgumentException>(() => new Train("Atlanta", TimeOnly.Parse("12:00"), -2));
+        }
+
+        [Test]
         public void BookWindowSeat_IfNoWindowSeatsLeft_ReturnFalseAndCountStaysAtZero()
         {
             var train = new Train("Atlanta", TimeOnly.Parse("12:00"), 0);
